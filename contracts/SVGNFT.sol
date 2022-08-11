@@ -16,11 +16,16 @@ contract SVGNFT is ERC721URIStorage{
 
     function create(string memory svg) public{
         _safeMint(msg.sender,tokenCounter);
+        string memory imageURI = svgToImageURI(svg)
+
         tokenCounter=tokenCounter+1;
     }
 
-    function svgToImageURI(){
+    function svgToImageURI(string memory svg) public pure returns(string memory){
         string memory baseURL = "data:image/svg+xml;base64,";
-        string memory svgBase64Encoded = Base64.encode();
+        string memory svgBase64Encoded = Base64.encode(bytes(string(abi.encodePacked(svg))));
+        string memory imageURI = string(abi.encodePacked(baseURL,svgBase64Encoded));
+
+        return imageURI;
     }
 }
