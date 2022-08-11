@@ -20,7 +20,7 @@ module.exports = {
     },
   },
   etherscan: {
-    apiKey: "ETHERSCAN_API_KEY",
+    apiKey: ETHERSCAN_API_KEY,
   },
   solidity: "0.8.9",
   namedAccounts: {
