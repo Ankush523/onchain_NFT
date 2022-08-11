@@ -13,7 +13,7 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   });
   log(`You have deployed an NFT contract to ${SVGNFT.address}`)
   let filepath = "./img/triangle.svg"
-  let svg = fw.readFileSync(filepath,{encoding:"utf-8"})
+  let svg = fs.readFileSync(filepath,{encoding:"utf-8"})
 
   const svgNFTContract = await ethers.getContractFactory("SVGNFT")
   const accounts = await hre.ethers.getSigners()
@@ -21,4 +21,6 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   const svgNFT = new ethers.Contract(SVGNFT.address, svgNFTContract.interface, signer)
   const networkName = networkConfig[chainId]['name']
   log(`Verify with: \n npx hardhat verify --network  ${networkName} ${svgNFT.address}`)
+
+  let transactionResponse
 };
