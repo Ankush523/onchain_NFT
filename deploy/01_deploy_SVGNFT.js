@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { updateAwait } = require("typescript");
 let {networkConfig} = require("../helper-hardhat-config")
 
 module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
@@ -22,5 +23,8 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   const networkName = networkConfig[chainId]['name']
   log(`Verify with: \n npx hardhat verify --network  ${networkName} ${svgNFT.address}`)
 
-  let transactionResponse
+  let transactionResponse = await svgNFT.create(svg)
+  let receipt = await transactionResponse.wait(1)
+  log(`You have made an NFT!`)
+  log(`YOu can view your tokenURI here ${await svgNFT.tokenURI(0 )}`) 
 };

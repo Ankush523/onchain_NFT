@@ -46,7 +46,7 @@ contract SVGNFT is ERC721URIStorage {
         pure
         returns (string memory)
     {
-        string memory baseURL = "data:application/json;base64";
+        string memory baseURL = "data:application/json;base64,";
         return
             string(
                 abi.encodePacked(
@@ -54,9 +54,9 @@ contract SVGNFT is ERC721URIStorage {
                     Base64.encode(
                         bytes(
                             abi.encodePacked(
-                                '{"name" : "SVG.NFT"',
-                                '"description": "An NFT based on SVG!"',
-                                '"attributes": ""',
+                                '{"name" : "SVG.NFT",',
+                                '"description": "An NFT based on SVG!", ',
+                                '"attributes": "", ',
                                 '"image": "',
                                 _imageURI,
                                 '"}'

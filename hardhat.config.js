@@ -6,9 +6,9 @@ module.exports = {
   defaultNetwork: "hardhat",
   networks:{
     hardhat: { },
-    // rinkeby: {
-    //   accounts:
-    // }
+    rinkeby: {
+      
+    }
   }, 
   solidity: "0.8.9",
   namedAccounts: {
